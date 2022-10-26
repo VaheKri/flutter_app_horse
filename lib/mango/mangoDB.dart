@@ -1,6 +1,6 @@
 import 'dart:developer';
 import 'package:mongo_dart/mongo_dart.dart';
-import 'constanteMango.dart';
+import 'constantMango.dart';
 
 class MangoDatabase {
   static connect() async {

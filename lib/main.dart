@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_horse/Mango/MangoDB.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await MangoDatabase.connect();
   runApp(const MyApp());
 }
 
