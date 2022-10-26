@@ -51,68 +51,143 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+    {
+      return Scaffold(
+          backgroundColor: Colors.white,
+          body: SingleChildScrollView(
+            child: Container(
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    height: 400,
+                    decoration: BoxDecoration(
+                    ),
+                    child: Stack(
+                      children: <Widget>[
+                        Positioned(
+                          left: 30,
+                          width: 80,
+                          height: 200,
+                          child: (Container(
+                            decoration: BoxDecoration(
+                            ),
+                          )),
+                        ),
+                        Positioned(
+                          left: 140,
+                          width: 80,
+                          height: 150,
+                          child: (Container(
+                            decoration: BoxDecoration(
+
+                            ),
+                          )),
+                        ),
+                        Positioned(
+                          right: 40,
+                          top: 40,
+                          width: 80,
+                          height: 150,
+                          child: (Container(
+                            decoration: BoxDecoration(
+                            ),
+                          )),
+                        ),
+                        Positioned(
+                          child: (Container(
+                            margin: EdgeInsets.only(top: 50),
+                            child: Center(
+                              child: Text("Login", style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 40,
+                                  fontWeight: FontWeight.bold),),
+                            ),
+                          )),
+                        )
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(30.0),
+                    child: Column(
+                      children: <Widget>[
+                        (Container(
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Color.fromRGBO(143, 148, 251, .2),
+                                    blurRadius: 20.0,
+                                    offset: Offset(0, 10)
+                                )
+                              ]
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                padding: EdgeInsets.all(8.0),
+                                decoration: BoxDecoration(
+                                    border: Border(bottom: BorderSide(
+                                        color: Colors.grey))
+                                ),
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintText: "Email or Phone number",
+                                      hintStyle: TextStyle(
+                                          color: Colors.grey[400])
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(8.0),
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintText: "Password",
+                                      hintStyle: TextStyle(
+                                          color: Colors.grey[400])
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        )),
+                        SizedBox(height: 30,),
+                        (Container(
+                          height: 50,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              gradient: LinearGradient(
+                                  colors: [
+                                    Color.fromRGBO(143, 148, 251, 1),
+                                    Color.fromRGBO(143, 148, 251, .6),
+                                  ]
+                              )
+                          ),
+                          child: Center(
+                            child: Text("Login", style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),),
+                          ),
+                        )),
+                        SizedBox(height: 70,),
+                        (Text(
+                          "Forgot Password?", style: TextStyle(color: Color
+                            .fromRGBO(143, 148, 251, 1)),)),
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+          )
+      );
+    }
   }
 }
