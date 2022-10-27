@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/buttonBar.dart';
+import 'package:flutter_app/register.dart';
+
 import 'Mango/MangoDB.dart';
 
 class LoginPage extends StatefulWidget {
@@ -113,10 +115,33 @@ class _LoginPageState extends State<LoginPage> {
                       const SizedBox(
                         height: 30,
                       ),
+                      TextButton(
+                          child: const Text('Forgot Password ?'),
+                          onPressed: () {
+                            // Navigator.push(context,
+                            //   MaterialPageRoute(
+                            //       builder: (context) => const (title: '',)
+                            //   ),
+                            // );
+                          }
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
                       (const Text(
-                        "Forgot Password?",
-                        style: TextStyle(color: Color.fromRGBO(143, 148, 251, 1)),
+                        "You do not have an account",
+                        style: TextStyle(color: Color(0xff2196f3)),
                       )),
+                          TextButton(
+                              child: Text('Create One !'),
+                              onPressed: () {
+                                Navigator.push(context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const RegisterPage(title: '',)
+                                  ),
+                                );
+                              }
+                          )
                     ],
                   ),
                 )

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'Mango/MangoDB.dart';
+import 'package:flutter_app/login.dart';
+
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key, required this.title});
@@ -111,12 +113,21 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: Text("Register"),
                       ))),
                   SizedBox(
-                    height: 70,
+                    height: 30,
                   ),
-                  (Text(
-                    "Forgot Password?",
-                    style: TextStyle(color: Color.fromRGBO(143, 148, 251, 1)),
-                  )),
+                  (const Text(
+                    "Already have an account",
+                    style: TextStyle(color: Color(0xff2196f3)),                  )),
+                  TextButton(
+                      child: const Text('Login !'),
+                      onPressed: () {
+                        Navigator.push(context,
+                          MaterialPageRoute(
+                              builder: (context) => const LoginPage(title: '',)
+                          ),
+                        );
+                      }
+                  )
                 ],
               ),
             )
