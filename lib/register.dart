@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'Mango/MangoDB.dart';
 
+
+
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key, required this.title});
 
@@ -16,6 +18,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController _username = TextEditingController();
   final TextEditingController _password = TextEditingController();
   final TextEditingController _mail = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +44,6 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 ElevatedButton(
                   onPressed: (){
-                   MangoDatabase().registerUser(_username.text, _password.text, _mail.text);
                    Navigator.pop(context);
                   },
                   child: Text("Register"),
