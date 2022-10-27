@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_horse/actuality.dart';
 import 'package:flutter_app_horse/register.dart';
 import 'Mango/MangoDB.dart';
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      routes: {RegisterPage.tag:(context)=>RegisterPage(title: 'Register')},
+      routes: {RegisterPage.tag:(context)=>RegisterPage(title: 'Register'), ActualityPage.tag:(context)=>ActualityPage(title: 'Actuality')},
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -42,12 +43,20 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-       child: ElevatedButton(
+       child: Column(children:[
+       ElevatedButton(
          onPressed: (){
            Navigator.of(context).pushNamed(RegisterPage.tag);
            },
          child: Text("Register"),
        ),
+         ElevatedButton(
+           onPressed: (){
+             Navigator.of(context).pushNamed(ActualityPage.tag);
+           },
+           child: Text("Actuality"),
+         ),
+       ])
       ),
 
     );
