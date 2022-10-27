@@ -15,6 +15,8 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController _username = TextEditingController();
   final TextEditingController _password = TextEditingController();
   final TextEditingController _mail = TextEditingController();
+  final TextEditingController _profilPicture = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +98,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             controller: _username,
                             decoration: InputDecoration(
                                 border: InputBorder.none,
-                                hintText: "Email or Phone number",
+                                hintText: "name",
                                 hintStyle: TextStyle(color: Colors.grey[400])),
                           ),
                         ),
@@ -116,13 +118,23 @@ class _RegisterPageState extends State<RegisterPage> {
                             controller: _mail,
                             decoration: InputDecoration(
                                 border: InputBorder.none,
-                                hintText: "Password",
+                                hintText: "mail",
                                 hintStyle: TextStyle(color: Colors.grey[400])),
                           ),
-                        )
-                      ],
+                        ),
+                  Container(
+                    padding: EdgeInsets.all(8.0),
+                    child: TextField(
+                      controller: _profilPicture,
+                      decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "URL profile picture",
+                          hintStyle: TextStyle(color: Colors.grey[400])),
                     ),
-                  )),
+                  )
+                ],
+              ),
+            )),
                   SizedBox(
                     height: 30,
                   ),
@@ -135,12 +147,35 @@ class _RegisterPageState extends State<RegisterPage> {
                             Color.fromRGBO(143, 148, 251, .6),
                           ])),
                       child: ElevatedButton(
-                        onPressed: () {
-                          MangoDatabase().registerUser(
-                              _username.text, _password.text, _mail.text);
+                        onPressed: ()  {
+                          MangoDatabase.registerUser(
+                              _username.text, _password.text, _mail.text,_profilPicture.text);
                           Navigator.pop(context);
                         },
                         child: Text("Register"),
+                      ))),
+                  SizedBox(
+                    height: 70,
+                  ),
+                  (Text(
+                    "Forgot Password?",
+                    style: TextStyle(color: Color.fromRGBO(143, 148, 251, 1)),
+                  )),
+                  (Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          gradient: LinearGradient(colors: [
+                            Color.fromRGBO(143, 148, 251, 1),
+                            Color.fromRGBO(143, 148, 251, .6),
+                          ])),
+                      child: ElevatedButton(
+                        onPressed: ()  {
+                          MangoDatabase.updateData(
+                             "username", _username.text, _mail.text,"users");
+                          Navigator.pop(context);
+                        },
+                        child: Text("Modify"),
                       ))),
                   SizedBox(
                     height: 70,

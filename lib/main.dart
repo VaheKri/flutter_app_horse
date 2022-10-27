@@ -4,8 +4,8 @@ import 'package:flutter_app/register.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await MangoDatabase.connect();
   runApp(const MyApp());
+  await MangoDatabase.connect();
 }
 
 class MyApp extends StatelessWidget {
