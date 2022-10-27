@@ -43,20 +43,20 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-       child: Column(children:[
-       ElevatedButton(
-         onPressed: (){
-           Navigator.of(context).pushNamed(RegisterPage.tag);
-           },
-         child: Text("Register"),
-       ),
-         ElevatedButton(
-           onPressed: (){
-             Navigator.of(context).pushNamed(ActualityPage.tag);
-           },
-           child: Text("Actuality"),
-         ),
-       ])
+          child: Column(children:[
+            ElevatedButton(
+              onPressed: (){
+                Navigator.of(context).pushNamed(RegisterPage.tag);
+              },
+              child: Text("Register"),
+            ),
+            ElevatedButton(
+              onPressed: (){
+                Navigator.of(context).pushNamed(ActualityPage.tag);
+              },
+              child: Text("Actuality"),
+            ),
+          ])
       ),
 
     );
