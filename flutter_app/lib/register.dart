@@ -24,51 +24,19 @@ class _RegisterPageState extends State<RegisterPage> {
         child: Column(
           children: <Widget>[
             Container(
-              height: 400,
-              decoration: BoxDecoration(),
-              child: Stack(
-                children: <Widget>[
-                  Positioned(
-                    left: 30,
-                    width: 80,
-                    height: 200,
-                    child: (Container(
-                      decoration: BoxDecoration(),
-                    )),
-                  ),
-                  Positioned(
-                    left: 140,
-                    width: 80,
-                    height: 150,
-                    child: (Container(
-                      decoration: BoxDecoration(),
-                    )),
-                  ),
-                  Positioned(
-                    right: 40,
-                    top: 40,
-                    width: 80,
-                    height: 150,
-                    child: (Container(
-                      decoration: BoxDecoration(),
-                    )),
-                  ),
-                  Positioned(
-                    child: (Container(
-                      margin: EdgeInsets.only(top: 50),
-                      child: Center(
-                        child: Text(
-                          "Login",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 40,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    )),
-                  )
-                ],
+              height: 142,
+              width: 300,
+              margin: const EdgeInsets.only(top: 100),
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: NetworkImage(
+                        "https://miro.medium.com/max/500/1*D5afxg0H9xyxfqRq_bfTgQ.png"),
+                ),
               ),
+            ),
+            Container (
+              margin: const EdgeInsets.only(top: 30),
+              child: const Text('Register', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
             ),
             Padding(
               padding: EdgeInsets.all(30.0),
