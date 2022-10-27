@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/Mango/MangoDB.dart';
-import 'package:flutter_app/login.dart';
+import 'package:flutter_app_horse/Mango/MangoDB.dart';
+import 'package:flutter_app_horse/login.dart';
 
 
 class RegisterPage extends StatefulWidget {
@@ -14,6 +14,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+
   final TextEditingController _username = TextEditingController();
   final TextEditingController _password = TextEditingController();
   final TextEditingController _mail = TextEditingController();
@@ -147,6 +148,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ],
             ),
           ),
-        ));
+        )
+    );
   }
 }
