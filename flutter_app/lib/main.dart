@@ -62,14 +62,6 @@ class _MyHomePageState extends State<MyHomePage> {
       return Scaffold(
           backgroundColor: Colors.white,
           body: SingleChildScrollView(
-            child: Container(
-              child: ElevatedButton(onPressed: () {
-                Navigator.of(context).pushNamed(RegisterPage.tag);
-              }, child: Text("Salut"),
-                
-              ),
-              
-            ),
           ));
     }
   }

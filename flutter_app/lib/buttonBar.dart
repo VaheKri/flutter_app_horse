@@ -81,18 +81,6 @@ class _buttonBarState extends State<buttonBar> {
               ),
               child: const Text('Other pag'),
             ),
-            IconButton(
-              icon: const Icon(Icons.settings),
-              iconSize: 35,
-              onPressed: () {
-                  Navigator.push(context,
-                  MaterialPageRoute(
-                      builder: (context) => const RegisterPage(title: 'Créer un jeu',)
-                  ),
-                );
-              },
-
-            ),
           ]
       ),
       ),
