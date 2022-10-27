@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/main.dart';
 
 class buttonBar extends StatefulWidget {
   const buttonBar({super.key, required this.title});
@@ -19,11 +18,24 @@ class _buttonBarState extends State<buttonBar> {
       appBar: AppBar(
           title: Row (
           children: [
+            Container(
+              margin: const EdgeInsets.only(right: 10),
+              width: 50,
+              height: 50,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(100),
+                  image: const DecorationImage(
+                      image: NetworkImage(
+                          "https://images.unsplash.com/photo-1579202673506-ca3ce28943ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"),
+                      fit: BoxFit.cover),
+                  border: Border.all(color: Colors.white, width: 2 ),
+              ),
+            ),
             ElevatedButton(
               onPressed: () {
               //   Navigator.push(context,
               //   MaterialPageRoute(
-              //       builder: (context) => const MyApp()
+              //
               //   ),
               // );
               },
