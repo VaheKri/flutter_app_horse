@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/lesson.dart';
 import 'package:flutter_app/register.dart';
+import 'package:flutter_app/socialEvent.dart';
 
 class buttonBar extends StatefulWidget {
   const buttonBar({super.key, required this.title});
@@ -53,18 +54,18 @@ class _buttonBarState extends State<buttonBar> {
                 margin: const EdgeInsets.all(10),
                 child: ElevatedButton(
                   onPressed: () {
-                    //   Navigator.push(context,
-                    //   MaterialPageRoute(
-                    //       builder: (context) => const MySecondPage(title: 'Créer un jeu',)
-                    //   ),
-                    // );
+                      Navigator.push(context,
+                      MaterialPageRoute(
+                          builder: (context) => const SocialEventPage(title: '',)
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blueGrey[600],
                     padding: const EdgeInsets.all(10),
                     side: const BorderSide(width: 1.0, color: Colors.white),
                   ),
-                  child: const Text('Other pag'),
+                  child: const Text('Social Event'),
                 ),
               ),
               ElevatedButton(
