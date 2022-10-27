@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Mango/MangoDB.dart';
 import 'package:flutter_app/register.dart';
+import 'package:flutter_app/login.dart';
+import 'package:flutter_app/lesson.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,7 +32,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routes: {RegisterPage.tag:(context)=>RegisterPage(title: 'Register')},
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const LoginPage(title: ''),
     );
   }
 }

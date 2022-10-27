@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/lesson.dart';
 import 'package:flutter_app/register.dart';
 
 class buttonBar extends StatefulWidget {
@@ -35,18 +36,18 @@ class _buttonBarState extends State<buttonBar> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  //   Navigator.push(context,
-                  //   MaterialPageRoute(
-                  //
-                  //   ),
-                  // );
+                    Navigator.push(context,
+                    MaterialPageRoute(
+                      builder: (context) => const LessonPage(title: 'Activity',)
+                    ),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blueGrey[600],
                   padding: const EdgeInsets.all(10),
                   side: const BorderSide(width: 1.0, color: Colors.white),
                 ),
-                child: const Text('Other pag'),
+                child: const Text('Activity'),
               ),
               Container(
                 margin: const EdgeInsets.all(10),
