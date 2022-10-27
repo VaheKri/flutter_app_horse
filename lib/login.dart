@@ -27,16 +27,16 @@ class _LoginPageState extends State<LoginPage> {
               children: <Widget>[
                 Container (
                   margin: const EdgeInsets.only(right: 300, top: 50),
-            child: ElevatedButton(
-                onPressed: () {
-                    Navigator.push(context,
-                    MaterialPageRoute(
-                        builder: (context) => const buttonBar(title: '',)
-                    ),
-                  );
-          },
-            child: const Text("Button Bar"),
-          ),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                        MaterialPageRoute(
+                            builder: (context) => const buttonBar(title: '',)
+                        ),
+                      );
+                    },
+                    child: const Text("Button Bar"),
+                  ),
                 ),
                 Container(
                   height: 142,
@@ -132,16 +132,16 @@ class _LoginPageState extends State<LoginPage> {
                         "You do not have an account",
                         style: TextStyle(color: Color(0xff2196f3)),
                       )),
-                          TextButton(
-                              child: Text('Create One !'),
-                              onPressed: () {
-                                Navigator.push(context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const RegisterPage(title: '',)
-                                  ),
-                                );
-                              }
-                          )
+                      TextButton(
+                          child: Text('Create One !'),
+                          onPressed: () {
+                            Navigator.push(context,
+                              MaterialPageRoute(
+                                  builder: (context) => const RegisterPage(title: '',)
+                              ),
+                            );
+                          }
+                      )
                     ],
                   ),
                 )
