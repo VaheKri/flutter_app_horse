@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/register.dart';
 
 class buttonBar extends StatefulWidget {
   const buttonBar({super.key, required this.title});
@@ -44,7 +45,7 @@ class _buttonBarState extends State<buttonBar> {
                 padding: const EdgeInsets.all(10),
                 side: const BorderSide(width: 1.0, color: Colors.white),
               ),
-              child: const Text('Other page 1'),
+              child: const Text('Other pag'),
             ),
             Container(
               margin: const EdgeInsets.all(10),
@@ -61,7 +62,7 @@ class _buttonBarState extends State<buttonBar> {
                   padding: const EdgeInsets.all(10),
                   side: const BorderSide(width: 1.0, color: Colors.white),
                 ),
-                child: const Text('Other pag 2'),
+                child: const Text('Other pag'),
               ),
             ),
             ElevatedButton(
@@ -77,7 +78,19 @@ class _buttonBarState extends State<buttonBar> {
                 padding: const EdgeInsets.all(10),
                 side: const BorderSide(width: 1.0, color: Colors.white),
               ),
-              child: const Text('Other page 3'),
+              child: const Text('Other pag'),
+            ),
+            IconButton(
+              icon: const Icon(Icons.settings),
+              iconSize: 35,
+              onPressed: () {
+                  Navigator.push(context,
+                  MaterialPageRoute(
+                      builder: (context) => const RegisterPage(title: 'Créer un jeu',)
+                  ),
+                );
+              },
+
             ),
           ]
       ),
