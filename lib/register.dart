@@ -20,11 +20,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
-            child: Container(
-      child: ElevatedButton(
-        onPressed: () {
-          Navigator.of(context).pushNamed(RegisterPage.tag);
-        },
+      child: Container(
         child: Column(
           children: <Widget>[
             Container(
@@ -159,6 +155,6 @@ class _RegisterPageState extends State<RegisterPage> {
           ],
         ),
       ),
-    )));
+    ));
   }
 }
