@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/Mango/MangoDB.dart';
 import 'package:flutter_app/register.dart';
 import 'package:flutter_app/login.dart';
-import 'package:flutter_app/lesson.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

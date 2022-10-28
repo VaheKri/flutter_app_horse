@@ -84,7 +84,23 @@ class MangoDatabase {
   }
 
   static  getSpecificListData(dynamic dataWanted,dynamic selectedCollection )async{
-    print("ICI");
+    var db = await Db.create(MONGO_URL);
+    ActualList.clear();
+    var collection = db.collection(selectedCollection);
+    await db.open();
+    var data = (await collection
+        .findOne(where.eq(dataWanted, "100"))); //For test is 100.
+    for (var item in data!.values) {
+      if(!item.toString().contains("Object",0)){
+        ActualList.add(item);
+      }
+    }
+    loopNumber=ActualList.length;
+
+
+  }
+
+  static Future<int> getNumberOfElement(dynamic dataWanted,dynamic selectedCollection )async{
     var db = await Db.create(MONGO_URL);
     ActualList.clear();
     var collection = db.collection(selectedCollection);
@@ -93,10 +109,10 @@ class MangoDatabase {
         .findOne(where.eq(dataWanted, "100"))); //For test is 100.
     for (var item in mail!.values) {
       ActualList.add(item);
-      print(item);
-      loopNumber++;
+      print(ActualList[item]);
     }
-    print(loopNumber);
+
+    return 10;
 
   }
 

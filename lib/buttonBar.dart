@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/lesson.dart';
-import 'package:flutter_app/register.dart';
 
 class buttonBar extends StatefulWidget {
   const buttonBar({super.key, required this.title});

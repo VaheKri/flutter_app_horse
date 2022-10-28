@@ -24,9 +24,10 @@ class _LessonPageState extends State<LessonPage> {
   String _selectedLand = "";
   String _selectedActivity = "";
   String _selectedDate = "";
+  int _selectedIndex = 0;
+
 
   DateTime dateTime = DateTime(2022, 10, 27, 17, 30);
-
 
   @override
   Widget build(BuildContext context) {
@@ -57,10 +58,10 @@ class _LessonPageState extends State<LessonPage> {
                                 items: _landList
                                     .map(
                                       (e) => DropdownMenuItem(
-                                    child: Text(e),
-                                    value: e,
-                                  ),
-                                )
+                                        child: Text(e),
+                                        value: e,
+                                      ),
+                                    )
                                     .toList(),
                                 onChanged: (val) {
                                   setState(() {
@@ -102,13 +103,13 @@ class _LessonPageState extends State<LessonPage> {
                                 final date = await pickDate();
                                 if (date == null) return;
 
-                              //  final newDateTime = DateTime(
-                               //   date.day,
-                               //   date.month,
+                                //  final newDateTime = DateTime(
+                                //   date.day,
+                                //   date.month,
                                 //  date.year,
-                               //   dateTime.hour,
-                               //   dateTime.minute,
-                             //   );
+                                //   dateTime.hour,
+                                //   dateTime.minute,
+                                //   );
                                 setState(() => dateTime = date);
                               },
                               child: Text(
@@ -126,13 +127,13 @@ class _LessonPageState extends State<LessonPage> {
                                 items: _durationList
                                     .map(
                                       (e) => DropdownMenuItem(
-                                    child: Text(e),
-                                    value: e,
-                                  ),
-                                )
+                                        child: Text(e),
+                                        value: e,
+                                      ),
+                                    )
                                     .toList(),
                                 onChanged: (val) {
-                                  setState(()  {
+                                  setState(() {
                                     _selectedDuration = val as String;
                                   });
                                 },
@@ -149,10 +150,10 @@ class _LessonPageState extends State<LessonPage> {
                                 items: _activityList
                                     .map(
                                       (e) => DropdownMenuItem(
-                                    child: Text(e),
-                                    value: e,
-                                  ),
-                                )
+                                        child: Text(e),
+                                        value: e,
+                                      ),
+                                    )
                                     .toList(),
                                 onChanged: (val) {
                                   setState(() {
@@ -167,7 +168,7 @@ class _LessonPageState extends State<LessonPage> {
                           Container(
                             padding: const EdgeInsets.all(10),
                             child: ElevatedButton(
-                                onPressed: () async{
+                                onPressed: () async {
                                   MangoDatabase.registerEvent(
                                       _selectedLand,
                                       _selectedActivity,
@@ -183,53 +184,59 @@ class _LessonPageState extends State<LessonPage> {
                 );
               });
         },
-
       ),
       body: Center(
-
         child: Column(
-
-
           children: [
-            Container( padding: const EdgeInsets.all(100),
-              child: ElevatedButton(
-                  onPressed: () async{
-                    MangoDatabase.registerEvent(
-                        _selectedLand,
-                        _selectedActivity,
-                        _selectedDate,
-                        _selectedDuration);
-                  },
-                  child: Text('Save')),),
+            FutureBuilder(
+                future: MangoDatabase.getSpecificListData('id', "event"),
+                // a previously-obtained Future<String> or null
+                builder: (context, snapshot) {
+                  return Column(children: [
+                      Container(
+                          padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                          height: 200,
+                          width: 300,
+                          child: Card(
+                            child: Column(
+                              children: [
 
-            ListView.builder(
-                itemCount: MangoDatabase.loopNumber,
-                itemBuilder: (context, i) {
-                  return ListBody(
-                    children:[
-                      Column(
-                        children: [
-                          Container(
-                            padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                            height: 220,
-                            width: 220,
-                            child: Card(
-                              child: Text(MangoDatabase.ActualList[i].toString()),
-                              elevation: 5,
-                            color: Colors.red,),),
+                            for(int i = 0; i < MangoDatabase.ActualList.length; i++)...[
 
-                        ],
-                      )
-                    ],
+                                Container(
+                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                  child:
+                                  Text(
+                                      MangoDatabase.ActualList[_selectedIndex].toString()),
 
-                  );
+
+                                ),
+                                Container(
+                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                  child: Text(
+                                      MangoDatabase.ActualList[_selectedIndex+1].toString()),
+                                ),
+                                Container(
+                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                  child: Text(
+                                      MangoDatabase.ActualList[_selectedIndex+2].toString()),
+                                ),
+                                Container(
+                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                  child: Text(
+                                      MangoDatabase.ActualList[_selectedIndex+3].toString()),
+                                ),
+                              ],
+                            ]),
+                          ))
+
+                  ]);
                 })
           ],
         ),
-
       ),
 
- // This trailing comma makes auto-formatting nicer for build methods.
+      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 
