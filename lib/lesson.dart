@@ -24,8 +24,6 @@ class _LessonPageState extends State<LessonPage> {
   String _selectedLand = "";
   String _selectedActivity = "";
   String _selectedDate = "";
-  int _selectedIndex = 0;
-
 
   DateTime dateTime = DateTime(2022, 10, 27, 17, 30);
 
@@ -192,46 +190,29 @@ class _LessonPageState extends State<LessonPage> {
                 future: MangoDatabase.getSpecificListData('id', "event"),
                 // a previously-obtained Future<String> or null
                 builder: (context, snapshot) {
+
                   return Column(children: [
-                      Container(
-                          padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                          height: 200,
-                          width: 300,
-                          child: Card(
-                            child: Column(
-                              children: [
-
-                            for(int i = 0; i < MangoDatabase.ActualList.length; i++)...[
-
-                                Container(
-                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                  child:
-                                  Text(
-                                      MangoDatabase.ActualList[_selectedIndex].toString()),
-
-
-                                ),
-                                Container(
-                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                  child: Text(
-                                      MangoDatabase.ActualList[_selectedIndex+1].toString()),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                  child: Text(
-                                      MangoDatabase.ActualList[_selectedIndex+2].toString()),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                  child: Text(
-                                      MangoDatabase.ActualList[_selectedIndex+3].toString()),
-                                ),
-                              ],
-                            ]),
-                          ))
-
-                  ]);
-                })
+                  for (int y= 0;
+                  y < MangoDatabase.ActualList.length;
+                      y++) ...[
+                    Container(
+                        padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                        height: 200,
+                        width: 300,
+                        child: Card(
+                            child: Column(children: [
+                          for (int i = 0;
+                              i < MangoDatabase.ActualList.length;
+                              i++) ...[
+                            Container(
+                              padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                              child:
+                                  Text(MangoDatabase.ActualList[i].toString()),
+                            ),
+                          ]
+                        ])))
+                  ]]);
+    })
           ],
         ),
       ),
