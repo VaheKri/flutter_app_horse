@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_horse/actuality.dart';
+import 'package:flutter_app_horse/login.dart';
 import 'package:flutter_app_horse/register.dart';
 import 'Admin.dart';
 import 'Mango/MangoDB.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routes: {RegisterPage.tag:(context)=>RegisterPage(title: 'Register'), ActualityPage.tag:(context)=>ActualityPage(title: 'Actuality'),AdminPage.tag:(context)=>AdminPage(title: 'Admin')},
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const ActualityPage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -169,7 +170,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: Center(
                            child: ElevatedButton(
          onPressed: (){
-           Navigator.of(context).pushNamed(AdminPage.tag);
+           Navigator.of(context).pushNamed(RegisterPage.tag);
            },
          child: Text("Register"),
 

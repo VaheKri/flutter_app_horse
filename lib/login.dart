@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/buttonBar.dart';
-import 'package:flutter_app/register.dart';
+import 'package:flutter_app_horse/register.dart';
+
 
 import 'Mango/MangoDB.dart';
+import 'buttonBar.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key, required this.title});
@@ -15,7 +16,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final TextEditingController _username = TextEditingController();
+  final TextEditingController _mailOrPhone = TextEditingController();
   final TextEditingController _password = TextEditingController();
 
   @override
@@ -76,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                                   border: Border(
                                       bottom: BorderSide(color: Colors.grey))),
                               child: TextField(
-                                controller: _username,
+                                controller: _mailOrPhone,
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
                                     hintText: "Email or Phone number",
@@ -109,6 +110,15 @@ class _LoginPageState extends State<LoginPage> {
                               ])),
                           child: ElevatedButton(
                             onPressed: () {
+                              MangoDatabase.logging('email', _mailOrPhone.text, _password.text, 'users');
+                              if(MangoDatabase.ifUserOnline){
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const buttonBar(
+                                          title: '',
+                                        )));
+                              }
                             },
                             child: const Text("Login"),
                           ))),
