@@ -6,15 +6,19 @@ class ActualityPage extends StatefulWidget {
 
   static const tag = "Actuality_page";
   final String title;
-
   @override
   State<ActualityPage> createState() => _ActualityPageState();
 }
 
 class _ActualityPageState extends State<ActualityPage> {
-
+_ActualityPageState(){
+  value =items[0].toString();
+}
 final today = DateTime.now();
 int _Dateoftheday = 0;
+final  items = ["all","course","party","competition"];
+String value ="";
+
 
 void setdateday(int dateiterator){
   setState(() {
@@ -62,6 +66,9 @@ int integerday(int _currentday){
         Center(
           child: Column(
             children: [
+            DropdownButton(value:value,items: items.map((e)=> DropdownMenuItem(child: Text(e),value:e)).toList(), onChanged: (val){setState(() {
+              value = val as String;
+            });}),
             SingleChildScrollView(
             scrollDirection: Axis.horizontal,
               child :
@@ -79,10 +86,40 @@ int integerday(int _currentday){
                     List _currentListEvent = [];
                     int _Dateday = integerday(today.day + _Dateoftheday);
                     if (snapshot.data != null) {
-                      for (int i = 0; i < snapshot.data!.length; i++) {
-                        var date = snapshot.data![i]["Date"][0];
-                        if (date == _Dateday) {
-                          _currentListEvent.add(snapshot.data![i]);
+                      if(value == "all") {
+                        for (int i = 0; i < snapshot.data!.length; i++) {
+                          var date = snapshot.data![i]["Date"][0];
+                          if (date == _Dateday) {
+                            _currentListEvent.add(snapshot.data![i]);
+                          }
+                        }
+                      }else if (value == "course"){
+                        for (int i = 0; i < snapshot.data!.length; i++) {
+                          var date = snapshot.data![i]["Date"][0];
+                          if (date == _Dateday) {
+                            if(snapshot.data![i]["type"]=="course") {
+                              _currentListEvent.add(snapshot.data![i]);
+                            }
+                          }
+                        }
+                      }else if (value == "party"){
+                        for (int i = 0; i < snapshot.data!.length; i++) {
+                          var date = snapshot.data![i]["Date"][0];
+                          if (date == _Dateday) {
+                            if(snapshot.data![i]["type"]=="party") {
+                              _currentListEvent.add(snapshot.data![i]);
+                            }
+                          }
+                        }
+                      }
+                      else if (value == "competition"){
+                        for (int i = 0; i < snapshot.data!.length; i++) {
+                          var date = snapshot.data![i]["Date"][0];
+                          if (date == _Dateday) {
+                            if(snapshot.data![i]["type"]=="competition") {
+                              _currentListEvent.add(snapshot.data![i]);
+                            }
+                          }
                         }
                       }
                     }
@@ -112,5 +149,7 @@ int integerday(int _currentday){
         )
     );
   }
+
+
 
 }

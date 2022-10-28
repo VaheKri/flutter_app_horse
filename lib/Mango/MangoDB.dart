@@ -20,12 +20,14 @@ class MangoDatabase {
     var _eventPoney = await db.collection('event');
     await _eventPoney.insertMany([
       {
-        'Date': [27, 2, 2022],
-        'type': 'soirer',
+        'Date': [28, 2, 2022],
+        'type': 'course',
         'participant': ['Antoine', 'Pierre'],
-      }, {'Date': [28, 3, 2023],
-        'type': 'concourt',
-        'participant': ["Jean", 'Paul'],}
+      }, {'Date': [28, 2, 2022],
+        'type': 'party',
+        'participant': ['Antoine', 'Pierre'],},{'Date': [28, 2, 2022],
+        'type': 'competition',
+        'participant': ['Antoine', 'Pierre'],}
     ]);
 
   }
@@ -76,6 +78,25 @@ class MangoDatabase {
     var db = connect();
     var collection = db.collection(selectedCollection);
     await collection.remove(where.eq(dataWanted, dataSelected));
+  }
+
+  static registerEvent( dynamic land, dynamic lesson,
+      dynamic date, dynamic duration ) async {
+    var db = await Db.create(MONGO_URL);
+    Random random = new Random();
+    int randomNumber = random.nextInt(10000);
+    await db.open();
+    await db.collection('event').insertOne(<String, dynamic>{
+      "land": land,
+      "lesson": lesson,
+      //"night": night,
+      "date":date,
+      "duration":duration,
+      //"skill":skill,
+      //"exam":exam
+      "lesson_id":randomNumber,
+      "id": "100",
+    });
   }
 
 }
