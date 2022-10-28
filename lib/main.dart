@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_horse/actuality.dart';
 import 'package:flutter_app_horse/register.dart';
+import 'Admin.dart';
 import 'Mango/MangoDB.dart';
+import 'package:flutter_app_horse/Mango/MangoDB.dart';
+import 'package:flutter_app_horse/register.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      routes: {RegisterPage.tag:(context)=>RegisterPage(title: 'Register'), ActualityPage.tag:(context)=>ActualityPage(title: 'Actuality')},
+      routes: {RegisterPage.tag:(context)=>RegisterPage(title: 'Register'), ActualityPage.tag:(context)=>ActualityPage(title: 'Actuality'),AdminPage.tag:(context)=>AdminPage(title: 'Admin')},
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -166,23 +169,20 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: Center(
                            child: ElevatedButton(
          onPressed: (){
-           Navigator.of(context).pushNamed(RegisterPage.tag);
+           Navigator.of(context).pushNamed(AdminPage.tag);
            },
          child: Text("Register"),
-                           
+
                         )),
-                        SizedBox(height: 70,),
-                        (Text(
-                          "Forgot Password?", style: TextStyle(color: Color
-                            .fromRGBO(143, 148, 251, 1)),)),
+                        ))
                       ],
                     ),
                   )
                 ],
               ),
+              
             ),
-          )
-      );
+          ));
     }
   }
 }

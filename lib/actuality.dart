@@ -73,7 +73,7 @@ int integerday(int _currentday){
             ])]
               ],)),
                 FutureBuilder(
-                future:   MangoDatabase().getEvent() , // a previously-obtained Future<String> or null
+                future:   MangoDatabase().getDataList('event') , // a previously-obtained Future<String> or null
                 builder: ( context,  snapshot) {
                   List showActuality() {
                     List _currentListEvent = [];

@@ -11,7 +11,17 @@ class MangoDatabase {
     await db.open();
     inspect(db);
 
-
+    await db.collection('horses').insertMany([{
+      'name': 'pegaze',
+      'owner': 'tom',
+      'DP': true,
+      "listDP": ["lea","paul"]
+    },{
+      'name': 'tonnerre',
+      'owner': 'manon',
+      'DP': false,
+      "listDP": [],
+    }]);
   }
 
   //static openCollection(var db)
@@ -23,9 +33,16 @@ class MangoDatabase {
 
   //static openCollection(var db)
 
-
+  Future<List> getDataList(String collection) async {
+    var db = await Db.create(MONGO_URL);
+    await db.open();
+    var _collection = await db.collection(collection);
+    var _datalist =  await _collection.find().toList();
+    return _datalist;
 
   }
+
+
 
   Future<List> getEvent() async {
     var db = await Db.create(MONGO_URL);
@@ -49,7 +66,7 @@ class MangoDatabase {
       "profilePicture": imageURL,
       "id": randomNumber
     });
-
+  }
 
 
   static updateData(dynamic dataWanted, dynamic notModifyData, dynamic dataModified,dynamic selectedCollection) async{
@@ -60,10 +77,14 @@ class MangoDatabase {
         where.eq(dataWanted, notModifyData),modify.set(dataWanted, dataModified));
   }
 
-  void deleteData(dynamic dataWanted,dynamic dataSelected,dynamic selectedCollection) async{
+  static deleteData(dynamic dataWanted,dynamic dataSelected,dynamic selectedCollection) async{
     var db = connect();
     var collection = db.collection(selectedCollection);
-    await collection.remove(where.eq(dataWanted, dataSelected));
+    await collection.remove(dataWanted, dataSelected);
   }
-
+  static delete(dynamic dataWanted,dynamic dataSelected) async{
+    var db = connect();
+    var collection = db.collection("users");
+    await collection.deleteOne(dataWanted, dataSelected);
+  }
 }
