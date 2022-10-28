@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/buttonBar.dart';
 import 'package:flutter_app/register.dart';
 
-import 'Mango/MangoDB.dart';
+import 'package:flutter_app/Mango/MangoDB.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key, required this.title});

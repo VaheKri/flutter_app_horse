@@ -4,6 +4,13 @@ import 'constantMango.dart';
 import 'dart:math';
 
 class MangoDatabase {
+
+
+  static late ActualUser OnlineUser;
+  static  bool ifUserOnline =false;
+  static var ActualList =[];
+  static int loopNumber=0;
+
   static connect() async {
     var db = await Db.create(MONGO_URL);
     await db.open();
@@ -36,31 +43,64 @@ class MangoDatabase {
     });
   }
 
-  static registerHorse(dynamic username, dynamic password, dynamic mail,
-      dynamic imageURL) async {
+  static registerEvent( dynamic land, dynamic lesson,
+      dynamic date, dynamic duration ) async {
     var db = await Db.create(MONGO_URL);
     Random random = new Random();
     int randomNumber = random.nextInt(10000);
     await db.open();
-    await db.collection('users').insertOne(<String, dynamic>{
-      'username': username,
-      'password': password,
-      'email': mail,
-      "profilePicture": imageURL,
-      "id": randomNumber,
-      "birth": "",
-      "accountFFE": '',
-      "phoneNumber": '',
+    await db.collection(COLLECTION_EVENT).insertOne(<String, dynamic>{
+      "land": land,
+      "lesson": lesson,
+      //"night": night,
+      "date":date,
+      "duration":duration,
+      //"skill":skill,
+      //"exam":exam
+      "lesson_id":randomNumber,
+      "id": "100",
     });
   }
 
-  static mapUserToTable(dynamic username) async {
+
+
+  static registerHorse(dynamic horsename, dynamic profilePicture, dynamic birth,
+      dynamic robe,dynamic sexe,dynamic speciality) async {
     var db = await Db.create(MONGO_URL);
+    Random random = new Random();
+    int randomNumber = random.nextInt(10000);
     await db.open();
+    await db.collection(COLLECTION_HORSE).insertOne(<String, dynamic>{
+      "horsename": horsename,
+      "profilePicture": profilePicture,
+      "birth": birth,
+      "robe":robe,
+      "sexe":sexe,
+      "speciality":speciality,
+      "horse_id":randomNumber,
+      "id": "",
+      "DP":""
+    });
   }
 
-  static late ActualUser OnlineUser;
-  static  bool ifUserOnline =false;
+  static  getSpecificListData(dynamic dataWanted,dynamic selectedCollection )async{
+    print("ICI");
+    var db = await Db.create(MONGO_URL);
+    ActualList.clear();
+    var collection = db.collection(selectedCollection);
+    await db.open();
+    var mail = (await collection
+        .findOne(where.eq(dataWanted, "100"))); //For test is 100.
+    for (var item in mail!.values) {
+      ActualList.add(item);
+      print(item);
+      loopNumber++;
+    }
+    print(loopNumber);
+
+  }
+
+
 
   static logging(dynamic dataWanted, dynamic enterMailOrNumberField,
       dynamic enterPassword, dynamic selectedCollection) async {
@@ -94,11 +134,9 @@ class MangoDatabase {
     //Ouvre le link DATA
     var db = await Db.create(MONGO_URL);
     await db.open();
-
     //Enregistre OLD user et modifier le OnlineUser (Pour simplifier la méthode)
     var OldUser =  OnlineUser;
     OnlineUser = ActualUser(modifyUserName.toString(), modifymail.toString(), password, profilePicture, accountFFE, phoneNumber, OldUser.id, birth)
-
     //Changement des valeurs dans la BDD
     var collection = db.collection(selectedCollection); // Aka users
     await collection.update(where.eq(selectedDataInCollection, OnlineUser.id),  // SelectedDataInCollection = id
